@@ -1,0 +1,2320 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "FoundationaLLM.Management.API",
+    "description": "FoundationaLLM.Management.API",
+    "contact": {
+      "name": "Solliance, Inc.",
+      "email": "contact@solliance.net"
+    },
+    "license": {
+      "name": "FoundationaLLM Software License",
+      "url": "https://www.foundationallm.ai/license"
+    },
+    "version": "2024-02-16"
+  },
+  "paths": {
+    "/instances/{instanceId}/providersX/FoundationaLLM.Configuration/caches/agent/clear": {
+      "post": {
+        "tags": [
+          "Caches"
+        ],
+        "summary": "Clears the agent cache from the relevant downstream services.",
+        "operationId": "ClearAgentCache",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APICacheRefreshResult"
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providersX/FoundationaLLM.Configuration/caches/datasource/clear": {
+      "post": {
+        "tags": [
+          "Caches"
+        ],
+        "summary": "Clears the datasource cache from the relevant downstream services.",
+        "operationId": "ClearDataSourceCache",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APICacheRefreshResult"
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providersX/FoundationaLLM.Configuration/caches/prompt/clear": {
+      "post": {
+        "tags": [
+          "Caches"
+        ],
+        "summary": "Clears the prompt cache from the relevant downstream services.",
+        "operationId": "ClearPromptCache",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APICacheRefreshResult"
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providersX/FoundationaLLM.Configuration/configurations/branding": {
+      "get": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Returns the branding configuration from app configuration.",
+        "operationId": "GetBrandingConfigurations",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ClientBrandingConfiguration"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Updates the branding configuration in app configuration.",
+        "operationId": "UpdateBrandingConfigurations",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ClientBrandingConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providersX/FoundationaLLM.Configuration/configurations/agentHints": {
+      "get": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Returns the configuration for global agent hints and feature setting.",
+        "operationId": "GetAgentHints",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AgentHints"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Updates the configuration for global agent hints and feature setting.",
+        "operationId": "UpdateAgentHints",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AgentHints"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/{resourceProvider}/{resourcePath}": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Gets one or more resources.",
+        "operationId": "GetResources",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "description": "The FoundationaLLM instance identifier.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceProvider",
+            "description": "The name of the resource provider that should handle the request.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourcePath",
+            "description": "The logical path of the resource type.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Creates or updates resources.",
+        "operationId": "UpsertResource",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "description": "The FoundationaLLM instance identifier.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceProvider",
+            "description": "The name of the resource provider that should handle the request.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourcePath",
+            "description": "The logical path of the resource type.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The serialized resource to be created or updated.",
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Deletes a resource.",
+        "operationId": "DeleteResource",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "description": "The FoundationaLLM instance identifier.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourceProvider",
+            "description": "The name of the resource provider that should handle the request.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "resourcePath",
+            "description": "The logical path of the resource type.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/vectorizationrequest": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "operationId": "GetVectorizationRequests",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VectorizationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/vectorizationrequest/{name}": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "operationId": "GetVectorizationRequestsByName",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VectorizationRequest"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tests"
+        ],
+        "operationId": "UpsertVectorizationRequests",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/VectorizationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/VectorizationRequest"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tests"
+        ],
+        "operationId": "DeleteVectorizationRequests",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/contentsourceprofile/{name}": {
+      "post": {
+        "tags": [
+          "Tests"
+        ],
+        "operationId": "UpsertContentSourceProfile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ContentSourceProfile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ContentSourceProfile"
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/vectorizationrequests/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "vectorizationrequests_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "VectorizationRequest",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VectorizationRequest"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "vectorizationrequests_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/VectorizationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/VectorizationProcessingResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "vectorizationrequests_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/vectorizationrequests": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "vectorizationrequests_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "VectorizationRequest",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VectorizationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentsourceprofiles/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "contentsourceprofiles_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "ContentSourceProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ContentSourceProfile"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "contentsourceprofiles_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ContentSourceProfile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "contentsourceprofiles_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentsourceprofiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentsourceprofiles": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "contentsourceprofiles_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "ContentSourceProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ContentSourceProfile"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textpartitioningprofiles/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textpartitioningprofiles_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "TextPartitioningProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TextPartitioningProfile"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textpartitioningprofiles_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/TextPartitioningProfile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textpartitioningprofiles_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textpartitioningprofiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textpartitioningprofiles": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textpartitioningprofiles_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "TextPartitioningProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TextPartitioningProfile"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textembeddingprofiles/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textembeddingprofiles_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "TextEmbeddingProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TextEmbeddingProfile"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textembeddingprofiles_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/TextEmbeddingProfile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textembeddingprofiles_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textembeddingprofiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textembeddingprofiles": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "textembeddingprofiles_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "TextEmbeddingProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TextEmbeddingProfile"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingprofiles/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "indexingprofiles_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "IndexingProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IndexingProfile"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "indexingprofiles_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/IndexingProfile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "indexingprofiles_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingprofiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingprofiles": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Vectorization"
+        ],
+        "operationId": "indexingprofiles_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "IndexingProfile",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IndexingProfile"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Agent/agents/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Agent"
+        ],
+        "operationId": "agents_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "KnowledgeManagementAgent",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/KnowledgeManagementAgent"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Agent"
+        ],
+        "operationId": "agents_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/KnowledgeManagementAgent"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Agent"
+        ],
+        "operationId": "agents_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Agent/agents/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Agent/agents": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Agent"
+        ],
+        "operationId": "agents_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "KnowledgeManagementAgent",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/KnowledgeManagementAgent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Prompt/prompts/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Prompt"
+        ],
+        "operationId": "prompts_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "MultipartPrompt",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MultipartPrompt"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.Prompt"
+        ],
+        "operationId": "prompts_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MultipartPrompt"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Prompt"
+        ],
+        "operationId": "prompts_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Prompt/prompts/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Prompt/prompts": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Prompt"
+        ],
+        "operationId": "prompts_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "MultipartPrompt",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MultipartPrompt"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "APICacheRefreshResult": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "type": "string"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AgentHints": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ClientBrandingConfiguration": {
+      "type": "object",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "pageTitle": {
+          "type": "string"
+        },
+        "favIconUrl": {
+          "type": "string"
+        },
+        "logoUrl": {
+          "type": "string"
+        },
+        "logoText": {
+          "type": "string"
+        },
+        "primaryColor": {
+          "type": "string"
+        },
+        "secondaryColor": {
+          "type": "string"
+        },
+        "accentColor": {
+          "type": "string"
+        },
+        "accentTextColor": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "primaryButtonBackgroundColor": {
+          "type": "string"
+        },
+        "primaryButtonTextColor": {
+          "type": "string"
+        },
+        "secondaryButtonBackgroundColor": {
+          "type": "string"
+        },
+        "secondaryButtonTextColor": {
+          "type": "string"
+        },
+        "kioskMode": {
+          "type": "boolean"
+        },
+        "primaryTextColor": {
+          "type": "string"
+        },
+        "secondaryTextColor": {
+          "type": "string"
+        },
+        "allowAgentSelection": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContentIdentifier": {
+      "type": "object",
+      "properties": {
+        "contentSourceProfileName": {
+          "type": "string"
+        },
+        "multipartId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canonicalId": {
+          "type": "string"
+        },
+        "uniqueId": {
+          "type": "string",
+          "readOnly": true
+        },
+        "fileName": {
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContentSourceProfile": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/ContentSourceType"
+        },
+        "name": {
+          "type": "string"
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "configurationReferences": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContentSourceType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "ConversationHistory": {
+      "title": "ConversationHistory",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "max_history": {
+          "default": 0,
+          "type": "integer"
+        }
+      }
+    },
+    "Gatekeeper": {
+      "title": "Gatekeeper",
+      "type": "object",
+      "properties": {
+        "use_system_setting": {
+          "type": "boolean"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "IndexerType": {
+      "title": "IndexerType",
+      "enum": [
+        "AzureAISearchIndexer"
+      ],
+      "type": "string"
+    },
+    "IndexingProfile": {
+      "title": "IndexingProfile",
+      "type": "object",
+      "properties": {
+        "Indexer": {
+          "$ref": "#/definitions/IndexerType"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "ObjectId": {
+          "type": "string"
+        },
+        "Settings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ConfigurationReferences": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "KnowledgeManagementAgent": {
+      "title": "KnowledgeManagementAgent",
+      "type": "object",
+      "properties": {
+        "indexing_profile": {
+          "type": "string"
+        },
+        "embedding_profile": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "language_model": {
+          "$ref": "#/definitions/LanguageModel"
+        },
+        "sessions_enabled": {
+          "type": "boolean"
+        },
+        "conversation_history": {
+          "$ref": "#/definitions/ConversationHistory"
+        },
+        "gatekeeper": {
+          "$ref": "#/definitions/Gatekeeper"
+        },
+        "orchestrator": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "object_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "LanguageModel": {
+      "title": "LanguageModel",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "temperature": {
+          "type": "number"
+        },
+        "use_chat": {
+          "type": "boolean"
+        },
+        "api_endpoint": {
+          "type": "string"
+        },
+        "api_key": {
+          "type": "string"
+        },
+        "api_version": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "deployment": {
+          "type": "string"
+        }
+      }
+    },
+    "MultipartPrompt": {
+      "title": "MultipartPrompt",
+      "type": "object",
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "object_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "NameCheckResultType": {
+      "title": "NameCheckResultType",
+      "enum": [
+        "Allowed",
+        "Denied"
+      ],
+      "type": "string"
+    },
+    "ResourceName": {
+      "title": "ResourceName",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ResourceNameCheckResult": {
+      "title": "ResourceNameCheckResult",
+      "type": "object",
+      "properties": {
+        "Status": {
+          "$ref": "#/definitions/NameCheckResultType"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ResourceProviderUpsertResult": {
+      "title": "ResourceProviderUpsertResult",
+      "type": "object",
+      "properties": {
+        "ObjectId": {
+          "type": "string"
+        }
+      }
+    },
+    "TextEmbeddingProfile": {
+      "title": "TextEmbeddingProfile",
+      "type": "object",
+      "properties": {
+        "TextEmbedding": {
+          "$ref": "#/definitions/TextEmbeddingType"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "ObjectId": {
+          "type": "string"
+        },
+        "Settings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ConfigurationReferences": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TextEmbeddingType": {
+      "title": "TextEmbeddingType",
+      "enum": [
+        "SemanticKernelTextEmbedding"
+      ],
+      "type": "string"
+    },
+    "TextPartitioningProfile": {
+      "title": "TextPartitioningProfile",
+      "type": "object",
+      "properties": {
+        "TextSplitter": {
+          "$ref": "#/definitions/TextSplitterType"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "ObjectId": {
+          "type": "string"
+        },
+        "Settings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ConfigurationReferences": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TextSplitterType": {
+      "title": "TextSplitterType",
+      "enum": [
+        "TokenTextSplitter"
+      ],
+      "type": "string"
+    },
+    "VectorizationProcessingResult": {
+      "title": "VectorizationProcessingResult",
+      "type": "object",
+      "properties": {
+        "object_id": {
+          "type": "string"
+        },
+        "is_success": {
+          "type": "boolean"
+        },
+        "error_message": {
+          "type": "string"
+        }
+      }
+    },
+    "VectorizationProcessingType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1
+      ],
+      "type": "integer"
+    },
+    "VectorizationRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "contentIdentifier": {
+          "$ref": "#/definitions/ContentIdentifier"
+        },
+        "processingType": {
+          "$ref": "#/definitions/VectorizationProcessingType"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VectorizationStep"
+          }
+        },
+        "completedSteps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remainingSteps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "complete": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "currentStep": {
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "VectorizationStep": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      },
+      "description": "Azure Active Directory Oauth2 Flow"
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ]
+}
