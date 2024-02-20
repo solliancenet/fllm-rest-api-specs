@@ -1907,8 +1907,11 @@
     "ContentSourceProfile": {
       "type": "object",
       "properties": {
-        "type": {
+        "contentSource": {
           "$ref": "#/definitions/ContentSourceType"
+        },
+        "type": {
+          "type": "string"
         },
         "name": {
           "type": "string"
@@ -1979,22 +1982,25 @@
       "title": "IndexingProfile",
       "type": "object",
       "properties": {
-        "Indexer": {
+        "indexer": {
           "$ref": "#/definitions/IndexerType"
         },
-        "Name": {
+        "type": {
           "type": "string"
         },
-        "ObjectId": {
+        "name": {
           "type": "string"
         },
-        "Settings": {
+        "object_id": {
+          "type": "string"
+        },
+        "settings": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
-        "ConfigurationReferences": {
+        "configuration_references": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -2006,10 +2012,13 @@
       "title": "KnowledgeManagementAgent",
       "type": "object",
       "properties": {
-        "indexing_profile": {
+        "indexing_profile_object_id": {
           "type": "string"
         },
-        "embedding_profile": {
+        "text_embedding_profile_object_id": {
+          "type": "string"
+        },
+        "text_partitioning_profile_object_id": {
           "type": "string"
         },
         "type": {
@@ -2030,7 +2039,7 @@
         "orchestrator": {
           "type": "string"
         },
-        "prompt": {
+        "prompt_object_id": {
           "type": "string"
         },
         "object_id": {
@@ -2087,6 +2096,9 @@
         "suffix": {
           "type": "string"
         },
+        "type": {
+          "type": "string"
+        },
         "object_id": {
           "type": "string"
         },
@@ -2094,9 +2106,6 @@
           "type": "string"
         },
         "name": {
-          "type": "string"
-        },
-        "type": {
           "type": "string"
         }
       }
@@ -2152,22 +2161,25 @@
       "title": "TextEmbeddingProfile",
       "type": "object",
       "properties": {
-        "TextEmbedding": {
+        "text_embedding": {
           "$ref": "#/definitions/TextEmbeddingType"
         },
-        "Name": {
+        "type": {
           "type": "string"
         },
-        "ObjectId": {
+        "name": {
           "type": "string"
         },
-        "Settings": {
+        "object_id": {
+          "type": "string"
+        },
+        "settings": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
-        "ConfigurationReferences": {
+        "configuration_references": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -2186,22 +2198,25 @@
       "title": "TextPartitioningProfile",
       "type": "object",
       "properties": {
-        "TextSplitter": {
+        "text_splitter": {
           "$ref": "#/definitions/TextSplitterType"
         },
-        "Name": {
+        "type": {
           "type": "string"
         },
-        "ObjectId": {
+        "name": {
           "type": "string"
         },
-        "Settings": {
+        "object_id": {
+          "type": "string"
+        },
+        "settings": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
-        "ConfigurationReferences": {
+        "configuration_references": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
