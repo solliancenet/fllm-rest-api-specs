@@ -412,44 +412,6 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/vectorizationrequest": {
-      "get": {
-        "tags": [
-          "Tests"
-        ],
-        "operationId": "GetVectorizationRequests",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "instanceId",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "api-version",
-            "description": "The requested API version",
-            "type": "string",
-            "default": "2024-02-16",
-            "collectionFormat": "multi"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/VectorizationRequest"
-              }
-            }
-          }
-        }
-      }
-    },
     "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/vectorizationrequest/{name}": {
       "get": {
         "tags": [
@@ -662,7 +624,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "VectorizationRequest",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/VectorizationRequest"
@@ -783,7 +744,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "VectorizationRequest",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/VectorizationRequest"
@@ -828,7 +788,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "ContentSourceProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ContentSourceProfile"
@@ -950,7 +909,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "ContentSourceProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ContentSourceProfile"
@@ -995,7 +953,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "TextPartitioningProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TextPartitioningProfile"
@@ -1117,7 +1074,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "TextPartitioningProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TextPartitioningProfile"
@@ -1162,7 +1118,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "TextEmbeddingProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TextEmbeddingProfile"
@@ -1284,7 +1239,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "TextEmbeddingProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TextEmbeddingProfile"
@@ -1329,7 +1283,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "IndexingProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/IndexingProfile"
@@ -1451,7 +1404,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "IndexingProfile",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/IndexingProfile"
@@ -1496,7 +1448,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "KnowledgeManagementAgent",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/KnowledgeManagementAgent"
@@ -1618,7 +1569,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "KnowledgeManagementAgent",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/KnowledgeManagementAgent"
@@ -1663,7 +1613,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "MultipartPrompt",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/MultipartPrompt"
@@ -1785,7 +1734,6 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "MultipartPrompt",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/MultipartPrompt"
@@ -1879,35 +1827,25 @@
       "additionalProperties": false
     },
     "ContentIdentifier": {
+      "title": "ContentIdentifier",
       "type": "object",
       "properties": {
-        "contentSourceProfileName": {
+        "content_source_profile_name": {
           "type": "string"
         },
-        "multipartId": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "canonicalId": {
+        "multipart_id": {
           "type": "string"
         },
-        "uniqueId": {
-          "type": "string",
-          "readOnly": true
-        },
-        "fileName": {
-          "type": "string",
-          "readOnly": true
+        "canonical_id": {
+          "type": "string"
         }
-      },
-      "additionalProperties": false
+      }
     },
     "ContentSourceProfile": {
+      "title": "ContentSourceProfile",
       "type": "object",
       "properties": {
-        "contentSource": {
+        "content_source": {
           "$ref": "#/definitions/ContentSourceType"
         },
         "type": {
@@ -1916,7 +1854,7 @@
         "name": {
           "type": "string"
         },
-        "objectId": {
+        "object_id": {
           "type": "string"
         },
         "settings": {
@@ -1925,23 +1863,22 @@
             "type": "string"
           }
         },
-        "configurationReferences": {
+        "configuration_references": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         }
-      },
-      "additionalProperties": false
+      }
     },
     "ContentSourceType": {
-      "format": "int32",
+      "title": "ContentSourceType",
       "enum": [
-        0,
-        1,
-        2
+        "AzureDataLake",
+        "SharePointOnline",
+        "AzureSQLDatabase"
       ],
-      "type": "integer"
+      "type": "string"
     },
     "ConversationHistory": {
       "title": "ConversationHistory",
@@ -2247,26 +2184,27 @@
       }
     },
     "VectorizationProcessingType": {
-      "format": "int32",
+      "title": "VectorizationProcessingType",
       "enum": [
-        0,
-        1
+        "Asynchronous",
+        "Synchronous"
       ],
-      "type": "integer"
+      "type": "string"
     },
     "VectorizationRequest": {
+      "title": "VectorizationRequest",
       "type": "object",
       "properties": {
         "id": {
           "type": "string"
         },
-        "objectId": {
+        "object_id": {
           "type": "string"
         },
-        "contentIdentifier": {
+        "content_identifier": {
           "$ref": "#/definitions/ContentIdentifier"
         },
-        "processingType": {
+        "processing_type": {
           "$ref": "#/definitions/VectorizationProcessingType"
         },
         "steps": {
@@ -2275,30 +2213,19 @@
             "$ref": "#/definitions/VectorizationStep"
           }
         },
-        "completedSteps": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "completed_steps": {
+          "type": "string"
         },
-        "remainingSteps": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "remaining_steps": {
+          "type": "string"
         },
-        "complete": {
-          "type": "boolean",
-          "readOnly": true
-        },
-        "currentStep": {
-          "type": "string",
-          "readOnly": true
+        "Item": {
+          "$ref": "#/definitions/VectorizationStep"
         }
-      },
-      "additionalProperties": false
+      }
     },
     "VectorizationStep": {
+      "title": "VectorizationStep",
       "type": "object",
       "properties": {
         "id": {
@@ -2310,8 +2237,7 @@
             "type": "string"
           }
         }
-      },
-      "additionalProperties": false
+      }
     }
   },
   "securityDefinitions": {
