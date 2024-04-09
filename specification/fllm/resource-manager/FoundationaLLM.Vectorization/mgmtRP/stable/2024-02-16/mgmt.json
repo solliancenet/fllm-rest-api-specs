@@ -197,81 +197,6 @@
         }
       }
     },
-    "/instances/{instanceId}/providersX/FoundationaLLM.Configuration/configurations/agentHints": {
-      "get": {
-        "tags": [
-          "Configurations"
-        ],
-        "summary": "Returns the configuration for global agent hints and feature setting.",
-        "operationId": "GetAgentHints",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "instanceId",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "api-version",
-            "description": "The requested API version",
-            "type": "string",
-            "default": "2024-02-16",
-            "collectionFormat": "multi"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/AgentHints"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Configurations"
-        ],
-        "summary": "Updates the configuration for global agent hints and feature setting.",
-        "operationId": "UpdateAgentHints",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "instanceId",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "api-version",
-            "description": "The requested API version",
-            "type": "string",
-            "default": "2024-02-16",
-            "collectionFormat": "multi"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/AgentHints"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/instances/{instanceId}/providers/{resourceProvider}/{resourcePath}": {
       "get": {
         "tags": [
@@ -412,12 +337,12 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/vectorizationrequest/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Authorization/roleAssignments/{name}": {
       "get": {
         "tags": [
-          "Tests"
+          "FoundationaLLM.Authorization"
         ],
-        "operationId": "GetVectorizationRequestsByName",
+        "operationId": "roleAssignments_Get",
         "produces": [
           "application/json"
         ],
@@ -449,7 +374,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/VectorizationRequest"
+                "$ref": "#/definitions/RoleAssignment"
               }
             }
           }
@@ -457,9 +382,9 @@
       },
       "post": {
         "tags": [
-          "Tests"
+          "FoundationaLLM.Authorization"
         ],
-        "operationId": "UpsertVectorizationRequests",
+        "operationId": "roleAssignments_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -491,7 +416,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/VectorizationRequest"
+              "$ref": "#/definitions/RoleAssignment"
             }
           }
         ],
@@ -499,16 +424,16 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/VectorizationRequest"
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
             }
           }
         }
       },
       "delete": {
         "tags": [
-          "Tests"
+          "FoundationaLLM.Authorization"
         ],
-        "operationId": "DeleteVectorizationRequests",
+        "operationId": "roleAssignments_Delete",
         "parameters": [
           {
             "in": "path",
@@ -538,12 +463,97 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization2/contentsourceprofile/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Authorization/roleAssignments": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Authorization"
+        ],
+        "operationId": "roleAssignments_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RoleAssignment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Configuration/appConfigurations/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Configuration"
+        ],
+        "operationId": "appConfigurations_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AppConfigurationKeyValue"
+                },
+                {
+                  "$ref": "#/definitions/AppConfigurationKeyVaultReference"
+                }
+              ]
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
-          "Tests"
+          "FoundationaLLM.Configuration"
         ],
-        "operationId": "UpsertContentSourceProfile",
+        "operationId": "appConfigurations_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -575,7 +585,15 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/ContentSourceProfile"
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/InternalContextAgent"
+                },
+                {
+                  "$ref": "#/definitions/KnowledgeManagementAgent"
+                }
+              ]
             }
           }
         ],
@@ -583,18 +601,90 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ContentSourceProfile"
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.Configuration"
+        ],
+        "operationId": "appConfigurations_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.Configuration/appConfigurations/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Configuration/appConfigurations": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.Configuration"
+        ],
+        "operationId": "appConfigurations_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppConfigurationKeyBase"
+              }
             }
           }
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/vectorizationrequests/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/vectorizationRequests/{name}": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "vectorizationrequests_Get",
+        "operationId": "vectorizationRequests_Get",
         "produces": [
           "application/json"
         ],
@@ -636,7 +726,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "vectorizationrequests_Upsert",
+        "operationId": "vectorizationRequests_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -685,7 +775,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "vectorizationrequests_Delete",
+        "operationId": "vectorizationRequests_Delete",
         "parameters": [
           {
             "in": "path",
@@ -715,12 +805,12 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/vectorizationrequests": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/vectorizationRequests": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "vectorizationrequests_List",
+        "operationId": "vectorizationRequests_List",
         "produces": [
           "application/json"
         ],
@@ -753,12 +843,12 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentsourceprofiles/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentSourceProfiles/{name}": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "contentsourceprofiles_Get",
+        "operationId": "contentSourceProfiles_Get",
         "produces": [
           "application/json"
         ],
@@ -800,7 +890,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "contentsourceprofiles_Upsert",
+        "operationId": "contentSourceProfiles_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -849,7 +939,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "contentsourceprofiles_Delete",
+        "operationId": "contentSourceProfiles_Delete",
         "parameters": [
           {
             "in": "path",
@@ -879,13 +969,13 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentsourceprofiles/checkname": { },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentsourceprofiles": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentSourceProfiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/contentSourceProfiles": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "contentsourceprofiles_List",
+        "operationId": "contentSourceProfiles_List",
         "produces": [
           "application/json"
         ],
@@ -918,12 +1008,12 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textpartitioningprofiles/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textPartitioningProfiles/{name}": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textpartitioningprofiles_Get",
+        "operationId": "textPartitioningProfiles_Get",
         "produces": [
           "application/json"
         ],
@@ -965,7 +1055,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textpartitioningprofiles_Upsert",
+        "operationId": "textPartitioningProfiles_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -1014,7 +1104,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textpartitioningprofiles_Delete",
+        "operationId": "textPartitioningProfiles_Delete",
         "parameters": [
           {
             "in": "path",
@@ -1044,13 +1134,13 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textpartitioningprofiles/checkname": { },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textpartitioningprofiles": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textPartitioningProfiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textPartitioningProfiles": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textpartitioningprofiles_List",
+        "operationId": "textPartitioningProfiles_List",
         "produces": [
           "application/json"
         ],
@@ -1083,12 +1173,12 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textembeddingprofiles/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textEmbeddingProfiles/{name}": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textembeddingprofiles_Get",
+        "operationId": "textEmbeddingProfiles_Get",
         "produces": [
           "application/json"
         ],
@@ -1130,7 +1220,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textembeddingprofiles_Upsert",
+        "operationId": "textEmbeddingProfiles_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -1179,7 +1269,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textembeddingprofiles_Delete",
+        "operationId": "textEmbeddingProfiles_Delete",
         "parameters": [
           {
             "in": "path",
@@ -1209,13 +1299,13 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textembeddingprofiles/checkname": { },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textembeddingprofiles": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textEmbeddingProfiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/textEmbeddingProfiles": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "textembeddingprofiles_List",
+        "operationId": "textEmbeddingProfiles_List",
         "produces": [
           "application/json"
         ],
@@ -1248,12 +1338,12 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingprofiles/{name}": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingProfiles/{name}": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "indexingprofiles_Get",
+        "operationId": "indexingProfiles_Get",
         "produces": [
           "application/json"
         ],
@@ -1295,7 +1385,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "indexingprofiles_Upsert",
+        "operationId": "indexingProfiles_Upsert",
         "consumes": [
           "application/json"
         ],
@@ -1344,7 +1434,7 @@
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "indexingprofiles_Delete",
+        "operationId": "indexingProfiles_Delete",
         "parameters": [
           {
             "in": "path",
@@ -1374,13 +1464,13 @@
         }
       }
     },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingprofiles/checkname": { },
-    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingprofiles": {
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingProfiles/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.Vectorization/indexingProfiles": {
       "get": {
         "tags": [
           "FoundationaLLM.Vectorization"
         ],
-        "operationId": "indexingprofiles_List",
+        "operationId": "indexingProfiles_List",
         "produces": [
           "application/json"
         ],
@@ -1448,10 +1538,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/KnowledgeManagementAgent"
-              }
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/InternalContextAgent"
+                },
+                {
+                  "$ref": "#/definitions/KnowledgeManagementAgent"
+                }
+              ]
             }
           }
         }
@@ -1492,7 +1587,15 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/KnowledgeManagementAgent"
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/InternalContextAgent"
+                },
+                {
+                  "$ref": "#/definitions/KnowledgeManagementAgent"
+                }
+              ]
             }
           }
         ],
@@ -1571,7 +1674,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/KnowledgeManagementAgent"
+                "$ref": "#/definitions/AgentBase"
               }
             }
           }
@@ -1742,6 +1845,190 @@
           }
         }
       }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.DataSource/dataSources/{name}": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.DataSource"
+        ],
+        "operationId": "dataSources_Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AzureDataLakeDataSource"
+                },
+                {
+                  "$ref": "#/definitions/AzureSQLDatabaseDataSource"
+                },
+                {
+                  "$ref": "#/definitions/SharePointOnlineSiteDataSource"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FoundationaLLM.DataSource"
+        ],
+        "operationId": "dataSources_Upsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/AzureDataLakeDataSource"
+                },
+                {
+                  "$ref": "#/definitions/AzureSQLDatabaseDataSource"
+                },
+                {
+                  "$ref": "#/definitions/SharePointOnlineSiteDataSource"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceProviderUpsertResult"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FoundationaLLM.DataSource"
+        ],
+        "operationId": "dataSources_Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/instances/{instanceId}/providers/FoundationaLLM.DataSource/dataSources/checkname": { },
+    "/instances/{instanceId}/providers/FoundationaLLM.DataSource/dataSources": {
+      "get": {
+        "tags": [
+          "FoundationaLLM.DataSource"
+        ],
+        "operationId": "dataSources_List",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "description": "The requested API version",
+            "type": "string",
+            "default": "2024-02-16",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DataSourceBase"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1757,14 +2044,367 @@
       },
       "additionalProperties": false
     },
-    "AgentHints": {
+    "AgentBase": {
+      "title": "AgentBase",
       "type": "object",
       "properties": {
-        "enabled": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "language_model": {
+          "$ref": "#/definitions/LanguageModel"
+        },
+        "sessions_enabled": {
+          "title": "sessions_enabled",
           "type": "boolean"
+        },
+        "conversation_history": {
+          "$ref": "#/definitions/ConversationHistory"
+        },
+        "gatekeeper": {
+          "$ref": "#/definitions/Gatekeeper"
+        },
+        "orchestration_settings": {
+          "$ref": "#/definitions/OrchestrationSettings"
+        },
+        "prompt_object_id": {
+          "title": "prompt_object_id",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
         }
-      },
-      "additionalProperties": false
+      }
+    },
+    "AppConfigurationKeyBase": {
+      "title": "AppConfigurationKeyBase",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "key": {
+          "title": "key",
+          "type": "string"
+        },
+        "value": {
+          "title": "value",
+          "type": "string"
+        },
+        "content_type": {
+          "title": "content_type",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "AppConfigurationKeyValue": {
+      "title": "AppConfigurationKeyValue",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "key": {
+          "title": "key",
+          "type": "string"
+        },
+        "value": {
+          "title": "value",
+          "type": "string"
+        },
+        "content_type": {
+          "title": "content_type",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "AppConfigurationKeyVaultReference": {
+      "title": "AppConfigurationKeyVaultReference",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "key_vault_uri": {
+          "title": "key_vault_uri",
+          "type": "string"
+        },
+        "key_vault_secret_name": {
+          "title": "key_vault_secret_name",
+          "type": "string"
+        },
+        "key": {
+          "title": "key",
+          "type": "string"
+        },
+        "value": {
+          "title": "value",
+          "type": "string"
+        },
+        "content_type": {
+          "title": "content_type",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "AzureDataLakeDataSource": {
+      "title": "AzureDataLakeDataSource",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "folders": {
+          "title": "folders",
+          "type": "string"
+        },
+        "configuration_references": {
+          "title": "configuration_references",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "AzureSQLDatabaseDataSource": {
+      "title": "AzureSQLDatabaseDataSource",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "tables": {
+          "title": "tables",
+          "type": "string"
+        },
+        "configuration_references": {
+          "title": "configuration_references",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
     },
     "ClientBrandingConfiguration": {
       "type": "object",
@@ -1819,9 +2459,6 @@
         },
         "secondaryTextColor": {
           "type": "string"
-        },
-        "allowAgentSelection": {
-          "type": "string"
         }
       },
       "additionalProperties": false
@@ -1831,13 +2468,23 @@
       "type": "object",
       "properties": {
         "content_source_profile_name": {
+          "title": "content_source_profile_name",
           "type": "string"
         },
         "multipart_id": {
+          "title": "multipart_id",
           "type": "string"
         },
         "canonical_id": {
+          "title": "canonical_id",
           "type": "string"
+        },
+        "metadata": {
+          "title": "metadata",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1845,29 +2492,62 @@
       "title": "ContentSourceProfile",
       "type": "object",
       "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
         "content_source": {
           "$ref": "#/definitions/ContentSourceType"
         },
-        "type": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "object_id": {
-          "type": "string"
-        },
         "settings": {
+          "title": "settings",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
         "configuration_references": {
+          "title": "configuration_references",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
         }
       }
     },
@@ -1876,7 +2556,8 @@
       "enum": [
         "AzureDataLake",
         "SharePointOnline",
-        "AzureSQLDatabase"
+        "AzureSQLDatabase",
+        "Web"
       ],
       "type": "string"
     },
@@ -1885,11 +2566,66 @@
       "type": "object",
       "properties": {
         "enabled": {
+          "title": "enabled",
           "type": "boolean"
         },
         "max_history": {
+          "title": "max_history",
           "default": 0,
           "type": "integer"
+        }
+      }
+    },
+    "DataSourceBase": {
+      "title": "DataSourceBase",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "configuration_references": {
+          "title": "configuration_references",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
         }
       }
     },
@@ -1898,9 +2634,11 @@
       "type": "object",
       "properties": {
         "use_system_setting": {
+          "title": "use_system_setting",
           "type": "boolean"
         },
         "options": {
+          "title": "options",
           "type": "array",
           "items": {
             "type": "string"
@@ -1919,52 +2657,78 @@
       "title": "IndexingProfile",
       "type": "object",
       "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
         "indexer": {
           "$ref": "#/definitions/IndexerType"
         },
-        "type": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "object_id": {
-          "type": "string"
-        },
         "settings": {
+          "title": "settings",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
         "configuration_references": {
+          "title": "configuration_references",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
         }
       }
     },
-    "KnowledgeManagementAgent": {
-      "title": "KnowledgeManagementAgent",
+    "InternalContextAgent": {
+      "title": "InternalContextAgent",
       "type": "object",
       "properties": {
-        "indexing_profile_object_id": {
-          "type": "string"
-        },
-        "text_embedding_profile_object_id": {
-          "type": "string"
-        },
-        "text_partitioning_profile_object_id": {
-          "type": "string"
-        },
         "type": {
+          "title": "type",
           "type": "string"
         },
         "language_model": {
           "$ref": "#/definitions/LanguageModel"
         },
         "sessions_enabled": {
+          "title": "sessions_enabled",
           "type": "boolean"
         },
         "conversation_history": {
@@ -1973,19 +2737,129 @@
         "gatekeeper": {
           "$ref": "#/definitions/Gatekeeper"
         },
-        "orchestrator": {
-          "type": "string"
+        "orchestration_settings": {
+          "$ref": "#/definitions/OrchestrationSettings"
         },
         "prompt_object_id": {
+          "title": "prompt_object_id",
           "type": "string"
         },
         "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
           "type": "string"
         },
         "description": {
+          "title": "description",
           "type": "string"
         },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
         "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "KnowledgeManagementAgent": {
+      "title": "KnowledgeManagementAgent",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "content_source_profile_object_id": {
+          "title": "content_source_profile_object_id",
+          "type": "string"
+        },
+        "indexing_profile_object_id": {
+          "title": "indexing_profile_object_id",
+          "type": "string"
+        },
+        "text_embedding_profile_object_id": {
+          "title": "text_embedding_profile_object_id",
+          "type": "string"
+        },
+        "text_partitioning_profile_object_id": {
+          "title": "text_partitioning_profile_object_id",
+          "type": "string"
+        },
+        "language_model": {
+          "$ref": "#/definitions/LanguageModel"
+        },
+        "sessions_enabled": {
+          "title": "sessions_enabled",
+          "type": "boolean"
+        },
+        "conversation_history": {
+          "$ref": "#/definitions/ConversationHistory"
+        },
+        "gatekeeper": {
+          "$ref": "#/definitions/Gatekeeper"
+        },
+        "orchestration_settings": {
+          "$ref": "#/definitions/OrchestrationSettings"
+        },
+        "prompt_object_id": {
+          "title": "prompt_object_id",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
           "type": "string"
         }
       }
@@ -1995,30 +2869,39 @@
       "type": "object",
       "properties": {
         "type": {
+          "title": "type",
           "type": "string"
         },
         "provider": {
+          "title": "provider",
           "type": "string"
         },
         "temperature": {
+          "title": "temperature",
           "type": "number"
         },
         "use_chat": {
+          "title": "use_chat",
           "type": "boolean"
         },
         "api_endpoint": {
+          "title": "api_endpoint",
           "type": "string"
         },
         "api_key": {
+          "title": "api_key",
           "type": "string"
         },
         "api_version": {
+          "title": "api_version",
           "type": "string"
         },
         "version": {
+          "title": "version",
           "type": "string"
         },
         "deployment": {
+          "title": "deployment",
           "type": "string"
         }
       }
@@ -2027,22 +2910,52 @@
       "title": "MultipartPrompt",
       "type": "object",
       "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
         "prefix": {
+          "title": "prefix",
           "type": "string"
         },
         "suffix": {
-          "type": "string"
-        },
-        "type": {
+          "title": "suffix",
           "type": "string"
         },
         "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
           "type": "string"
         },
         "description": {
+          "title": "description",
           "type": "string"
         },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
         "name": {
+          "title": "name",
           "type": "string"
         }
       }
@@ -2055,14 +2968,139 @@
       ],
       "type": "string"
     },
+    "OrchestrationSettings": {
+      "title": "OrchestrationSettings",
+      "type": "object",
+      "properties": {
+        "orchestrator": {
+          "title": "orchestrator",
+          "type": "string"
+        },
+        "agent_parameters": {
+          "title": "agent_parameters",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "endpoint_configuration": {
+          "title": "endpoint_configuration",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "model_parameters": {
+          "title": "model_parameters",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PromptBase": {
+      "title": "PromptBase",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "ResourceBase": {
+      "title": "ResourceBase",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
     "ResourceName": {
       "title": "ResourceName",
       "type": "object",
       "properties": {
-        "name": {
+        "type": {
+          "title": "type",
           "type": "string"
         },
-        "type": {
+        "name": {
+          "title": "name",
           "type": "string"
         }
       }
@@ -2071,16 +3109,19 @@
       "title": "ResourceNameCheckResult",
       "type": "object",
       "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
         "Status": {
           "$ref": "#/definitions/NameCheckResultType"
         },
         "Message": {
+          "title": "Message",
           "type": "string"
         },
         "name": {
-          "type": "string"
-        },
-        "type": {
+          "title": "name",
           "type": "string"
         }
       }
@@ -2090,6 +3131,205 @@
       "type": "object",
       "properties": {
         "ObjectId": {
+          "title": "ObjectId",
+          "type": "string"
+        }
+      }
+    },
+    "RoleAssignment": {
+      "title": "RoleAssignment",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "role_definition_id": {
+          "title": "role_definition_id",
+          "type": "string"
+        },
+        "principal_id": {
+          "title": "principal_id",
+          "type": "string"
+        },
+        "principal_type": {
+          "title": "principal_type",
+          "type": "string"
+        },
+        "scope": {
+          "title": "scope",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "RoleDefinition": {
+      "title": "RoleDefinition",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "assignable_scopes": {
+          "title": "assignable_scopes",
+          "type": "string"
+        },
+        "permissions": {
+          "title": "permissions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleDefinitionPermissions"
+          }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
+    "RoleDefinitionPermissions": {
+      "title": "RoleDefinitionPermissions",
+      "type": "object",
+      "properties": {
+        "actions": {
+          "title": "actions",
+          "type": "string"
+        },
+        "not_actions": {
+          "title": "not_actions",
+          "type": "string"
+        },
+        "data_actions": {
+          "title": "data_actions",
+          "type": "string"
+        },
+        "not_data_actions": {
+          "title": "not_data_actions",
+          "type": "string"
+        }
+      }
+    },
+    "SharePointOnlineSiteDataSource": {
+      "title": "SharePointOnlineSiteDataSource",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "site_url": {
+          "title": "site_url",
+          "type": "string"
+        },
+        "document_libraries": {
+          "title": "document_libraries",
+          "type": "string"
+        },
+        "configuration_references": {
+          "title": "configuration_references",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
           "type": "string"
         }
       }
@@ -2098,29 +3338,62 @@
       "title": "TextEmbeddingProfile",
       "type": "object",
       "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
         "text_embedding": {
           "$ref": "#/definitions/TextEmbeddingType"
         },
-        "type": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "object_id": {
-          "type": "string"
-        },
         "settings": {
+          "title": "settings",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
         "configuration_references": {
+          "title": "configuration_references",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
         }
       }
     },
@@ -2135,29 +3408,62 @@
       "title": "TextPartitioningProfile",
       "type": "object",
       "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
         "text_splitter": {
           "$ref": "#/definitions/TextSplitterType"
         },
-        "type": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "object_id": {
-          "type": "string"
-        },
         "settings": {
+          "title": "settings",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
         },
         "configuration_references": {
+          "title": "configuration_references",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
         }
       }
     },
@@ -2173,12 +3479,15 @@
       "type": "object",
       "properties": {
         "object_id": {
+          "title": "object_id",
           "type": "string"
         },
         "is_success": {
+          "title": "is_success",
           "type": "boolean"
         },
         "error_message": {
+          "title": "error_message",
           "type": "string"
         }
       }
@@ -2191,14 +3500,76 @@
       ],
       "type": "string"
     },
+    "VectorizationProfileBase": {
+      "title": "VectorizationProfileBase",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string"
+        },
+        "settings": {
+          "title": "settings",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "configuration_references": {
+          "title": "configuration_references",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "object_id": {
+          "title": "object_id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "display_name",
+          "type": "string"
+        },
+        "description": {
+          "title": "description",
+          "type": "string"
+        },
+        "created_on": {
+          "title": "created_on",
+          "type": "object"
+        },
+        "updated_on": {
+          "title": "updated_on",
+          "type": "object"
+        },
+        "created_by": {
+          "title": "created_by",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "updated_by",
+          "type": "string"
+        },
+        "deleted": {
+          "title": "deleted",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "name",
+          "type": "string"
+        }
+      }
+    },
     "VectorizationRequest": {
       "title": "VectorizationRequest",
       "type": "object",
       "properties": {
         "id": {
+          "title": "id",
           "type": "string"
         },
         "object_id": {
+          "title": "object_id",
           "type": "string"
         },
         "content_identifier": {
@@ -2208,15 +3579,18 @@
           "$ref": "#/definitions/VectorizationProcessingType"
         },
         "steps": {
+          "title": "steps",
           "type": "array",
           "items": {
             "$ref": "#/definitions/VectorizationStep"
           }
         },
         "completed_steps": {
+          "title": "completed_steps",
           "type": "string"
         },
         "remaining_steps": {
+          "title": "remaining_steps",
           "type": "string"
         },
         "Item": {
@@ -2229,9 +3603,11 @@
       "type": "object",
       "properties": {
         "id": {
+          "title": "id",
           "type": "string"
         },
         "parameters": {
+          "title": "parameters",
           "type": "object",
           "additionalProperties": {
             "type": "string"
